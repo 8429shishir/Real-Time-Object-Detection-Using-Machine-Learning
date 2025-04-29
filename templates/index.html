@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Object Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>🔍 AI Object Detection</h1>
+
+    <div class="upload-section">
+        <h2>📁 Upload Image for Detection</h2>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/*" required>
+            <button type="submit">Detect Objects</button>
+        </form>
+    </div>
+
+    {% if image_filename %}
+        <div class="result-section">
+            <h2>🖼️ Detected Image</h2>
+            <img src="{{ url_for('processed_file', filename=image_filename) }}" alt="Detected Image" width="600">
+        </div>
+    {% endif %}
+
+    <div class="camera-section">
+        <h2>📸 Live Camera Detection</h2>
+        <img src="{{ url_for('video_feed') }}" id="camera-stream" width="640" height="480">
+    </div>
+</body>
+</html>
