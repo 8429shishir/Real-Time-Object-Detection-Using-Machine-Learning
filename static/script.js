@@ -1,5 +1,10 @@
-document.getElementById('fileInput').addEventListener('change', function() {
-    if (this.files.length > 0) {
-        alert("File selected: " + this.files[0].name);
-    }
+document.addEventListener('DOMContentLoaded', () => {
+    const fileInput = document.getElementById('fileInput');
+    const fileNameDisplay = document.getElementById('fileNameDisplay');
+
+    fileInput.addEventListener('change', () => {
+        if (fileInput.files.length > 0) {
+            fileNameDisplay.textContent = `📄 Selected: ${fileInput.files[0].name}`;
+        }
+    });
 });

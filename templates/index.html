@@ -3,29 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <title>AI Object Detection</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>🔍 AI Object Detection</h1>
-
-    <div class="upload-section">
-        <h2>📁 Upload Image for Detection</h2>
-        <form action="/upload" method="post" enctype="multipart/form-data">
-            <input type="file" name="file" accept="image/*" required>
-            <button type="submit">Detect Objects</button>
-        </form>
-    </div>
-
-    {% if image_filename %}
-        <div class="result-section">
-            <h2>🖼️ Detected Image</h2>
-            <img src="{{ url_for('processed_file', filename=image_filename) }}" alt="Detected Image" width="600">
+    <div class="container">
+        <h1>🔍 AI Object Detection</h1>
+        <div class="upload-section card">
+            <h2 style="color: #4A90E2; font-weight: 700;">Bundelkhand Institute of Engineering & Technology, Jhansi</h2>
+            <h3 style="margin-top: 10px;">🎓 Major Project</h3>
+            <h4 style="color: #2c3e50; margin-top: 15px;">📌 Project Title: <em>Real-Time Object Detection Using Machine Learning</em></h4>
+        
+            <div style="margin-top: 20px;">
+                <h4>👥 Team Members:</h4>
+                <ul style="list-style-type: none; padding: 0; font-size: 16px;">
+                    <li>• Shishir Singh (Team Lead) [2100430100047]</li>
+                    <li>• Brijesh Sonkar [2100430100013]</li>
+                    <li>• Chandan Verma [2100430100015]</li>
+                    <li>• Chandan Kumar Mishra [2100430100014]</li>
+                    <li>• Palak Verma [2100430100035]</li>
+                </ul>
+            </div>
         </div>
-    {% endif %}
+        
 
-    <div class="camera-section">
-        <h2>📸 Live Camera Detection</h2>
-        <img src="{{ url_for('video_feed') }}" id="camera-stream" width="640" height="480">
+        <div class="upload-section card">
+            <h2>📁 Upload Image for Detection</h2>
+            <form action="/upload" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" accept="image/*" id="fileInput" required>
+                <button type="submit">🚀 Detect Objects</button>
+            </form>
+            <p id="fileNameDisplay"></p>
+        </div>
+
+        {% if image_filename %}
+        <div class="result-section card">
+            <h2>🖼️ Detected Image</h2>
+            <img src="{{ url_for('processed_file', filename=image_filename) }}" alt="Detected Image" class="image-preview">
+        </div>
+        {% endif %}
+
+        <div class="camera-section card">
+            <h2>📸 Live Camera Detection</h2>
+            <img src="{{ url_for('video_feed') }}" id="camera-stream" width="640" height="480">
+        </div>
     </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
+
